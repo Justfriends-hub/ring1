@@ -9,15 +9,36 @@ import {
   RingDesignPerspective,
 } from '../types';
 
-export const HERO_IMAGE = '/src/assets/images/hero_aurelia_ring_1792363616333.jpg';
-export const ATELIER_IMAGE = '/src/assets/images/manufaktur_atelier_1792363619375.jpg';
-export const AURORA_IMAGE = '/src/assets/images/ring_aurora_solitaire_1792363616924.jpg';
-export const ETERNA_IMAGE = '/src/assets/images/ring_eterna_ehering_1792363618674.jpg';
-export const CELESTE_IMAGE = '/src/assets/images/ring_celeste_sapphire_1792363618142.jpg';
-export const SIDE_PROFILE_IMAGE = '/src/assets/images/ring_side_profile_1792414033201.jpg';
-export const ON_HAND_IMAGE = '/src/assets/images/ring_on_hand_1792414033238.jpg';
-export const HALLMARK_IMAGE = '/src/assets/images/ring_macro_hallmark_1792414033781.jpg';
-export const TOP_CROWN_IMAGE = '/src/assets/images/ring_top_crown_cut_1792414033254.jpg';
+import heroImage from '../assets/images/hero_aurelia_ring_1792363616333.jpg';
+import atelierImage from '../assets/images/manufaktur_atelier_1792363619375.jpg';
+import auroraImage from '../assets/images/ring_aurora_solitaire_1792363616924.jpg';
+import eternaImage from '../assets/images/ring_eterna_ehering_1792363618674.jpg';
+import celesteImage from '../assets/images/ring_celeste_sapphire_1792363618142.jpg';
+import sideProfileImage from '../assets/images/ring_side_profile_1792414033201.jpg';
+import onHandImage from '../assets/images/ring_on_hand_1792414033238.jpg';
+import hallmarkImage from '../assets/images/ring_macro_hallmark_1792414033781.jpg';
+import topCrownImage from '../assets/images/ring_top_crown_cut_1792414033254.jpg';
+import productImage01 from '../assets/images/photo_2026-10-19_09-27-35.jpg';
+import productImage02 from '../assets/images/photo_2026-10-19_09-28-23.jpg';
+import productImage03 from '../assets/images/photo_2026-10-19_09-28-26.jpg';
+import productImage04 from '../assets/images/photo_2026-10-19_09-28-29.jpg';
+import productImage05 from '../assets/images/photo_2026-10-19_09-28-32.jpg';
+import productImage06 from '../assets/images/photo_2026-10-19_09-28-35.jpg';
+import productImage07 from '../assets/images/photo_2026-10-19_09-28-38.jpg';
+import productImage08 from '../assets/images/photo_2026-10-19_09-28-40.jpg';
+import productImage09 from '../assets/images/photo_2026-10-19_09-28-43.jpg';
+import productImage10 from '../assets/images/photo_2026-10-19_09-28-46.jpg';
+import productImage11 from '../assets/images/photo_2026-10-19_09-28-49.jpg';
+
+export const HERO_IMAGE = heroImage;
+export const ATELIER_IMAGE = atelierImage;
+export const AURORA_IMAGE = auroraImage;
+export const ETERNA_IMAGE = eternaImage;
+export const CELESTE_IMAGE = celesteImage;
+export const SIDE_PROFILE_IMAGE = sideProfileImage;
+export const ON_HAND_IMAGE = onHandImage;
+export const HALLMARK_IMAGE = hallmarkImage;
+export const TOP_CROWN_IMAGE = topCrownImage;
 
 export function createRingPerspectives(primaryImage: string, ringName: string): RingDesignPerspective[] {
   return [
@@ -66,7 +87,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'solitaer-aurora',
     subtitle: '585 Weißgold · Brillant 0,25 ct',
     category: 'verlobungsringe',
-    basePrice: 1890,
+    basePrice: 1790,
     availableMetals: ['585 Weißgold', '750 Weißgold', '750 Gelbgold', '950 Platin'],
     stoneType: 'Brillant (G/VS)',
     carat: 0.25,
@@ -74,7 +95,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 4,
     badge: 'Bestseller',
-    images: [AURORA_IMAGE, HERO_IMAGE],
+    images: [productImage01, productImage02],
     description:
       'Der Solitär Aurora besticht durch eine klassische Vier-Krappen-Fassung, die das Licht des handgefassten Brillanten maximiert. Die Ringschiene verjüngt sich sanft zum Mittelstein hin und schenkt dem Ring eine federleichte Ästhetik. Gefertigt in unserer Pforzheimer Manufaktur.',
     details: {
@@ -97,14 +118,14 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'ehering-eterna',
     subtitle: '750 Gelbgold · Seidenmattes Finish',
     category: 'eheringe',
-    basePrice: 1150,
+    basePrice: 1250,
     availableMetals: ['750 Gelbgold', '585 Gelbgold', '585 Roségold', '950 Platin'],
     stoneType: 'Ohne Stein',
     sizes: [48, 50, 52, 54, 56, 58, 60, 62, 64, 66],
     inStock: true,
     stockCount: 8,
     badge: 'Bestseller',
-    images: [ETERNA_IMAGE, HERO_IMAGE],
+    images: [productImage03, productImage04],
     description:
       'Ein Trauring von elementarer Ruhe und Beständigkeit. Gegossen aus recyceltem 750er Gelbgold und von Meisterhand mit einem feinen Längsstrich mattiert. Die Innenbombierung garantiert höchsten Tragekomfort im täglichen Leben.',
     details: {
@@ -124,7 +145,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'allianzring-celeste',
     subtitle: '585 Roségold · Ceylon-Saphir & Pavé',
     category: 'allianzringe',
-    basePrice: 2450,
+    basePrice: 1850,
     availableMetals: ['585 Roségold', '750 Weißgold', '750 Gelbgold'],
     stoneType: 'Ceylon-Saphir',
     carat: 0.85,
@@ -132,7 +153,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 2,
     badge: 'Nur noch 2 verfügbar',
-    images: [CELESTE_IMAGE, AURORA_IMAGE],
+    images: [productImage05, productImage06],
     description:
       'Das tiefe Königsblau eines naturbelassenen Ceylon-Saphirs im Kissenschliff, umrahmt von einem zarten Halo aus 18 handgefassten Brillanten. Das warme 585er Roségold bildet eine poetische Harmonie mit dem kühlen Blau des Edelsteins.',
     details: {
@@ -155,7 +176,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'solitaer-lumina',
     subtitle: '950 Platin · Brillant 0,50 ct',
     category: 'verlobungsringe',
-    basePrice: 3890,
+    basePrice: 1890,
     availableMetals: ['950 Platin', '750 Weißgold', '750 Gelbgold'],
     stoneType: 'Brillant (F/VVS)',
     carat: 0.5,
@@ -163,7 +184,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 3,
     badge: 'Neu',
-    images: [AURORA_IMAGE, HERO_IMAGE],
+    images: [productImage07, productImage08],
     description:
       'Pures 950er Platin trifft auf einen herausragenden Halbkaräter mit GIA-Expertise. Platin verliert über Generationen hinweg kein Material und bewahrt die reine weiße Strahlkraft des Diamanten für immer.',
     details: {
@@ -193,7 +214,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 6,
     badge: undefined,
-    images: [ETERNA_IMAGE, HERO_IMAGE],
+    images: [productImage09, productImage10],
     description:
       'Klassische Eleganz in massiver Platinausführung. 4,0 mm Breite verleihen dem Ring Präsenz und Haptik, während die handpolierte Oberfläche die schwere Dichte des Edelmetalls spürbar macht.',
     details: {
@@ -212,7 +233,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'memoire-palais',
     subtitle: '750 Weißgold · Rundum 0,60 ct',
     category: 'allianzringe',
-    basePrice: 2780,
+    basePrice: 1790,
     availableMetals: ['750 Weißgold', '750 Gelbgold', '950 Platin'],
     stoneType: 'Brillant (G/VS)',
     carat: 0.6,
@@ -220,7 +241,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 3,
     badge: 'Neu',
-    images: [CELESTE_IMAGE, AURORA_IMAGE],
+    images: [productImage11, productImage01],
     description:
       'Ein unendlicher Reigen funkelnder Diamanten. 24 handgefasste Brillanten in Kanalfassung schließen nahtlos aneinander an und symbolisieren unvergängliche Momente.',
     details: {
@@ -243,7 +264,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'solitaer-mira',
     subtitle: '585 Gelbgold · Zargenfassung 0,35 ct',
     category: 'verlobungsringe',
-    basePrice: 2190,
+    basePrice: 1320,
     availableMetals: ['585 Gelbgold', '750 Gelbgold', '585 Weißgold'],
     stoneType: 'Brillant (G/VS)',
     carat: 0.35,
@@ -251,7 +272,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 5,
     badge: undefined,
-    images: [HERO_IMAGE, AURORA_IMAGE],
+    images: [productImage02, productImage05],
     description:
       'Zeitgenössischer Minimalismus in seiner reinsten Form: Die geschlossene Zargenfassung schützt die Rundiste des Diamanten vollständig und schmiegt sich glatt an die Haut an – ideal für ein aktives Leben.',
     details: {
@@ -273,14 +294,14 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'siegelring-aurelius',
     subtitle: '750 Gelbgold · Handgravur-Fläche',
     category: 'siegelringe',
-    basePrice: 1950,
+    basePrice: 1560,
     availableMetals: ['750 Gelbgold', '585 Gelbgold', '925 Silber'],
     stoneType: 'Ohne Stein',
     sizes: [56, 58, 60, 62, 64, 66],
     inStock: true,
     stockCount: 4,
     badge: 'Unikat',
-    images: [ETERNA_IMAGE, HERO_IMAGE],
+    images: [productImage03, productImage06],
     description:
       'Eine Hommage an jahrhundertealte Goldschmiedetradition. Massiver Ringkopf mit satinierter Gravurplatte, bereit für Ihr persönliches Monogramm oder Familienwappen aus unserem Graveur-Atelier.',
     details: {
@@ -299,7 +320,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'spannring-nova',
     subtitle: '950 Platin · Freischwebender Brillant',
     category: 'verlobungsringe',
-    basePrice: 2850,
+    basePrice: 1840,
     availableMetals: ['950 Platin', '750 Weißgold'],
     stoneType: 'Brillant (F/VVS)',
     carat: 0.3,
@@ -307,7 +328,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 2,
     badge: 'Nur noch 2 verfügbar',
-    images: [AURORA_IMAGE, HERO_IMAGE],
+    images: [productImage07, productImage09],
     description:
       'Der Brillant scheint zwischen den Enden der Platinschiene schwerelos zu schweben. Reine Spannkraft hält den Edelstein fest und erlaubt ungehinderten Lichteinfall aus jedem Winkel.',
     details: {
@@ -336,7 +357,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 7,
     badge: undefined,
-    images: [ETERNA_IMAGE, HERO_IMAGE],
+    images: [productImage10, productImage11],
     description:
       'Jede Facette wird vom Goldschmiedemeister mit dem Ziselierhammer einzeln von Hand gesetzt. So entsteht ein sanftes Schattenspiel auf der Oberfläche, das das Licht lebendig reflektiert.',
     details: {
@@ -355,7 +376,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     slug: 'solitaer-elysium',
     subtitle: '750 Roségold · Ovalschliff 0,70 ct',
     category: 'verlobungsringe',
-    basePrice: 4650,
+    basePrice: 1890,
     availableMetals: ['750 Roségold', '950 Platin', '750 Gelbgold'],
     stoneType: 'Brillant (F/VVS)',
     carat: 0.7,
@@ -363,7 +384,7 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     inStock: true,
     stockCount: 1,
     badge: 'Neu',
-    images: [HERO_IMAGE, CELESTE_IMAGE],
+    images: [productImage04, productImage08],
     description:
       'Ein atemberaubender Diamant im seltenen Ovalschliff streckt optisch den Finger und entfaltet eine faszinierende Brillanz. Gefasst in 18 Karat Roségold mit filigranen Krallen.',
     details: {
@@ -379,32 +400,6 @@ const RAW_INITIAL_PRODUCTS: Omit<Product, 'perspectives'>[] = [
     hallmark: '750 Feingehalt & GIA-Laserpunze',
     engravingAvailable: true,
     featured: true,
-  },
-  {
-    id: 'aur-012',
-    name: 'Allianzring Serenus',
-    slug: 'allianzring-serenus',
-    subtitle: '925 Silber & 585 Feingold-Inlay',
-    category: 'allianzringe',
-    basePrice: 590,
-    availableMetals: ['925 Silber', '585 Gelbgold'],
-    stoneType: 'Ohne Stein',
-    sizes: [50, 52, 54, 56, 58, 60, 62, 64],
-    inStock: true,
-    stockCount: 9,
-    badge: undefined,
-    images: [ETERNA_IMAGE, HERO_IMAGE],
-    description:
-      'Kühles 925 Sterlingsilber, veredelt mit einer eingelassenen 585er Gelbgold-Ader. Ein zeitloser Ring für Liebhaber subtiler Zweifarbigkeit und ehrlicher Materialkunst.',
-    details: {
-      ringWidthMm: 4.5,
-      profile: 'Bicolor, seidenmatt gebürstet',
-      origin: 'Manufaktur Pforzheim',
-    },
-    careInstructions: 'Inklusive Silberpflegetuch zur Werterhaltung.',
-    hallmark: '925 / 585',
-    engravingAvailable: true,
-    featured: false,
   },
 ];
 
