@@ -11,7 +11,7 @@ import {
   Send,
   ExternalLink,
 } from 'lucide-react';
-import { useShop, TELEGRAM_ORDER_URL } from '../context/ShopContext';
+import { useShop, TELEGRAM_ORDER_URL, buildTelegramOrderUrl } from '../context/ShopContext';
 import { Product, PreciousMetal, ProductCategory } from '../types';
 import { formatEuro } from '../utils/formatters';
 import { RingPerspectiveViewer } from '../components/RingPerspectiveViewer';
@@ -434,14 +434,15 @@ export const ShopPage: React.FC<ShopPageProps> = ({
                             <p className="text-[10px] text-[#8C877D]">inkl. 19 % MwSt.</p>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-1.5 pt-1">
-                            <button
-                              type="button"
-                              onClick={() => setPerspectiveProduct(product)}
-                              className="w-full py-2 bg-[#1F2A24] hover:bg-[#B08D57] text-[#FBF8F3] text-[11px] uppercase tracking-wider font-medium transition-colors cursor-pointer text-center"
+                          <div className="grid grid-cols-1 gap-1.5 pt-1">
+                            <a
+                              href={buildTelegramOrderUrl(`AURELIA Ringbestellung:\nModell: ${product.name}\nPreis: ${formatEuro(product.basePrice)}`)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-full py-2 bg-[#B08D57] hover:bg-[#977644] text-[#1F2A24] hover:text-white text-[11px] uppercase tracking-wider font-medium transition-colors cursor-pointer text-center block"
                             >
-                              5 Seiten & Korb
-                            </button>
+                              Bestellung über Telegram
+                            </a>
                             <button
                               type="button"
                               onClick={() => navigateTo('product', product.id)}

@@ -10,7 +10,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { Product, PreciousMetal } from '../types';
-import { useShop, TELEGRAM_ORDER_URL } from '../context/ShopContext';
+import { useShop, TELEGRAM_ORDER_URL, buildTelegramOrderUrl } from '../context/ShopContext';
 import { formatEuro, getDiameterFromCircumference } from '../utils/formatters';
 
 interface RingPerspectiveViewerProps {
@@ -69,13 +69,7 @@ export const RingPerspectiveViewer: React.FC<RingPerspectiveViewerProps> = ({
   };
 
   const handleTelegramOrder = () => {
-    const details = `AURELIA Manufaktur - Direkte Ringbestellung:
-Modell: ${product.name}
-Gewählte Ansicht/Fassung: ${currentPerspective.label} (${currentPerspective.detailTitle})
-Edelmetall: ${selectedMetal}
-Ringgröße: ${selectedSize} mm (Ø ${getDiameterFromCircumference(selectedSize)} mm)
-${engraving.trim() ? `Wunschgravur: „${engraving.trim()}“\n` : ''}Preis: ${formatEuro(finalPrice)}
-Status: Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
+    const details = `AURELIA Manufaktur - Direkte Ringbestellung:\nModell: ${product.name}\nGewählte Ansicht/Fassung: ${currentPerspective.label} (${currentPerspective.detailTitle})\nEdelmetall: ${selectedMetal}\nRinggröße: ${selectedSize} mm (Ø ${getDiameterFromCircumference(selectedSize)} mm)\n${engraving.trim() ? `Wunschgravur: „${engraving.trim()}“\n` : ''}Preis: ${formatEuro(finalPrice)}\nStatus: Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
 
     try {
       if (navigator.clipboard) {
@@ -85,10 +79,9 @@ Status: Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
       // clipboard fallback
     }
 
-    showToast(
-      'Bestelldetails für Meister @dexco36 kopiert! Telegram (t.me/dexco36) wird geöffnet...',
-      'info'
-    );
+    const telegramUrl = buildTelegramOrderUrl(details);
+    window.open(telegramUrl, '_blank', 'noopener,noreferrer');
+    showToast('Telegram geöffnet – die Ringdetails wurden bereits mitgegeben.', 'info');
   };
 
   const content = (
@@ -269,17 +262,6 @@ Status: Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
 
         {/* Action Buttons: Put in cart & Message admin via Telegram */}
         <div className="space-y-3 pt-4 border-t border-[#E3DAC9]">
-          {/* 1. Put in Cart button */}
-          <button
-            type="button"
-            onClick={handleAddToCart}
-            className="w-full py-3.5 bg-[#1F2A24] hover:bg-[#B08D57] text-[#FBF8F3] text-[12px] font-medium tracking-[0.16em] uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
-          >
-            <ShoppingBag className="w-4 h-4 stroke-[1.5]" />
-            <span>In den Warenkorb legen · {formatEuro(finalPrice)}</span>
-          </button>
-
-          {/* 2. Message Admin to place order button (t.me/dexco36) */}
           <div className="p-3 bg-[#F5F0E8] border border-[#B08D57]/40 space-y-2">
             <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#B08D57]">
               <Send className="w-3.5 h-3.5" />
@@ -290,13 +272,13 @@ Status: Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
               Goldschmiedemeister abstimmen?
             </p>
             <a
-              href={TELEGRAM_ORDER_URL}
+              href={buildTelegramOrderUrl(`AURELIA Ringbestellung:\nModell: ${product.name}\nPreis: ${formatEuro(finalPrice)}\nEdelmetall: ${selectedMetal}\nGröße: ${selectedSize} mm`) }
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleTelegramOrder}
               className="w-full py-2.5 px-3 bg-[#B08D57] hover:bg-[#977644] text-[#1F2A24] hover:text-white text-[12px] font-medium tracking-[0.12em] uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer text-center"
             >
-              <span>Meister kontaktieren & bestellen (t.me/dexco36)</span>
+              <span>Bestellen über Telegram · {formatEuro(finalPrice)}</span>
               <ExternalLink className="w-3.5 h-3.5 stroke-[1.5]" />
             </a>
           </div>

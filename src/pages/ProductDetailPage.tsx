@@ -15,7 +15,7 @@ import {
   Send,
   ExternalLink,
 } from 'lucide-react';
-import { useShop, TELEGRAM_ORDER_URL } from '../context/ShopContext';
+import { useShop, TELEGRAM_ORDER_URL, buildTelegramOrderUrl } from '../context/ShopContext';
 import { PreciousMetal, StoneType, Review } from '../types';
 import { formatEuro, getDiameterFromCircumference } from '../utils/formatters';
 import { RingPerspectiveViewer } from '../components/RingPerspectiveViewer';
@@ -102,16 +102,7 @@ export const ProductDetailPage: React.FC = () => {
   };
 
   const handleTelegramOrder = () => {
-    const orderDetails = `AURELIA Ringbestellung:
-Modell: ${product.name}
-Gewählte Perspektive: ${currentPerspective.label} (${currentPerspective.detailTitle})
-Edelmetall: ${selectedMetal}
-Ringgröße: ${selectedSize} mm (Ø ${getDiameterFromCircumference(selectedSize)} mm)
-Besatz: ${product.stoneType}${product.carat ? ` (${product.carat} ct)` : ''}
-${engravingText.trim() ? `Lasergravur: „${engravingText.trim()}“ (${engravingFont})\n` : ''}Preis: ${formatEuro(currentPrice)}
-Link: https://aurelia-manufaktur.de/ring/${product.slug}
-
-Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
+    const orderDetails = `AURELIA Ringbestellung:\nModell: ${product.name}\nGewählte Perspektive: ${currentPerspective.label} (${currentPerspective.detailTitle})\nEdelmetall: ${selectedMetal}\nRinggröße: ${selectedSize} mm (Ø ${getDiameterFromCircumference(selectedSize)} mm)\nBesatz: ${product.stoneType}${product.carat ? ` (${product.carat} ct)` : ''}\n${engravingText.trim() ? `Lasergravur: „${engravingText.trim()}“ (${engravingFont})\n` : ''}Preis: ${formatEuro(currentPrice)}\nLink: https://aurelia-manufaktur.de/ring/${product.slug}\n\nBitte erfassen Sie meine Bestellung und Kontaktdaten.`;
 
     try {
       if (navigator.clipboard) {
@@ -121,10 +112,9 @@ Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
       // fallback
     }
 
-    showToast(
-      'Bestelldetails für Meister @dexco36 kopiert! Telegram (t.me/dexco36) wird geöffnet...',
-      'info'
-    );
+    const telegramUrl = buildTelegramOrderUrl(orderDetails);
+    window.open(telegramUrl, '_blank', 'noopener,noreferrer');
+    showToast('Telegram geöffnet – Ringname und Preis wurden automatisch mitgegeben.', 'info');
   };
 
   const handleReviewSubmit = (e: React.FormEvent) => {
@@ -420,16 +410,6 @@ Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
 
           {/* Action Buttons */}
           <div className="space-y-3 pt-2">
-            {/* Primary: In den Warenkorb */}
-            <button
-              onClick={handleAddToCart}
-              className="w-full py-4 bg-[#1F2A24] hover:bg-[#B08D57] text-[#FBF8F3] text-[13px] font-medium tracking-[0.16em] uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-sm"
-            >
-              <span>In den Warenkorb · {formatEuro(currentPrice)}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            {/* Message Admin to Place Order (t.me/dexco36) */}
             <div className="p-4 bg-[#F5F0E8] border border-[#B08D57]/60 space-y-2.5">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#B08D57] flex items-center gap-1.5">
@@ -445,14 +425,14 @@ Bitte erfassen Sie meine Bestellung und Kontaktdaten.`;
                 Goldschmiedemeister abstimmen?
               </p>
               <a
-                href={TELEGRAM_ORDER_URL}
+                href={buildTelegramOrderUrl(`AURELIA Ringbestellung:\nModell: ${product.name}\nPreis: ${formatEuro(currentPrice)}\nMetall: ${selectedMetal}\nGröße: ${selectedSize} mm`) }
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleTelegramOrder}
                 className="w-full py-3 px-3 bg-[#B08D57] hover:bg-[#977644] text-[#1F2A24] hover:text-white text-[12px] font-medium tracking-[0.12em] uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer text-center shadow-xs"
               >
                 <Send className="w-3.5 h-3.5 stroke-[1.5]" />
-                <span>Meister kontaktieren & bestellen (t.me/dexco36)</span>
+                <span>Bestellen über Telegram · {formatEuro(currentPrice)}</span>
                 <ExternalLink className="w-3.5 h-3.5 stroke-[1.5]" />
               </a>
             </div>

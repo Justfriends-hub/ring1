@@ -22,6 +22,10 @@ import {
 } from '../data/mockData';
 
 export const TELEGRAM_ORDER_URL = 'https://t.me/dexco36';
+
+export const buildTelegramOrderUrl = (message: string) =>
+  `${TELEGRAM_ORDER_URL}?text=${encodeURIComponent(message)}`;
+
 import {
   FREE_SHIPPING_THRESHOLD,
   STANDARD_SHIPPING_DE,
