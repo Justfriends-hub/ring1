@@ -1,0 +1,6 @@
+{
+  "name": "AURELIA Ringmanufaktur",
+  "description": "Handgefertigte Verlobungsringe, Eheringe und Unikate aus deutscher Manufaktur. Zeitlose Eleganz, zertifizierte Diamanten und nachhaltige Edelmetalle.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
