@@ -255,20 +255,8 @@ export const CartDrawer: React.FC = () => {
                 </p>
               </div>
 
-              {/* Primary Action Button */}
+              {/* Direct Telegram Order Option */}
               <div className="space-y-2.5 pt-2">
-                <button
-                  onClick={() => {
-                    setIsCartOpen(false);
-                    navigateTo('checkout');
-                  }}
-                  className="w-full py-3.5 bg-[#1F2A24] text-[#FBF8F3] hover:bg-[#B08D57] text-[13px] font-medium tracking-[0.16em] uppercase transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-                >
-                  <span>Zur Kasse gehen</span>
-                  <ArrowRight className="w-4 h-4 stroke-[1.5]" />
-                </button>
-
-                {/* Direct Telegram Order Option */}
                 <a
                   href={TELEGRAM_ORDER_URL}
                   target="_blank"
